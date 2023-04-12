@@ -20,13 +20,17 @@ public class Product {
 
     @Column(nullable=false)
     private int price;
+
+    @Column(nullable=false)
+    private int quantity;
     
     public Product(){}
 
-    public Product(int id, String name, int price){
+    public Product(int id, String name, int price, int quantity){
         this.id = id;
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
     }
 
     //{get; set;}
@@ -52,6 +56,14 @@ public class Product {
 
     public void setPrice(int price){
         this.price = price;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public void setQuantity(){
+        this.quantity = quantity;
     }
 
 }

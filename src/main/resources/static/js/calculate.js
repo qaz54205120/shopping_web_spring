@@ -3,23 +3,45 @@
         $(document).ready(function() {
             $('#butBtn').click(function(){
                 var name = $('#name').val();
+                if(!name){
+                    alert("Please enter a name!");
+                    return;
+                }
                 console.log(name);
                 var total = 0;
                 var message = name + ', you bought ';
-                $('.quantity').each(function() {
-                    var quantity = parseInt($(this).val());
+                var enough = true;
+                var countSum = 0;
+                $('.count').each(function() {
+                    var count = parseInt($(this).val());
                     var price = parseInt($(this).attr('data-price'));
                     var productName = $(this).attr('data-name');
+                    var quantity = parseInt($(this).attr('data-quantity'));
                     console.log(price);
                     console.log(productName);
-                    if ( quantity > 0){
-                        var subtotal = price * quantity;
+                    if ( count > 0 && count <= quantity){
+                        var subtotal = price * count;
                         total += subtotal;
-                        message += quantity + ' ' + productName + ' , ';
+                        message += count + ' ' + productName + ' , ';
+                    }else{
+                        enough = false;
+                        message = "Quantity of " + productName +  " are not enough";
+                        return false;
                     }
+                    countSum += count;
                     });
-                    message += 'total cost is ' + total + ' dollars.';
-                    $('#total').text(message);
-                    alert(message);
+                    if(countSum ==0){
+                        alert("Please select some products");
+                        return;
+                    }
+                    if(enough){
+                        message += 'total cost is ' + total + ' dollars.';
+                        $('#total').text(message);
+                        alert(message);
+                    }else{
+                        $('#total').text(message);
+                        alert(message);
+                    }
+                    
                 });
             });

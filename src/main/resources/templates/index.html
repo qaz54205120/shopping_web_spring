@@ -10,30 +10,36 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Price</th>
-                
+                <th align="left">Name</th>
+                <th align="left">Price</th>
+                <th align="left">Number</th>
+                <th align="left">Quantity</th>
             </tr>
         </thead>
         <tbody id = "productList">
             <tr th:each="product : ${products}">
-                <td th:text="${product.name}"></td>
-                <td th:text="${product.price}"></td>
-                <td><input 
+                <td align="left" th:text="${product.name}"></td>
+                <td align="center" th:text="${product.price}"></td>
+                <td align="center">
+                <input 
                     type="number" 
-                    class="quantity"
+                    class="count"
                     value="0" 
                     min="0"
                     max="10"
                     th:data-price="${product.price}"
                     th:data-name = "${product.name}"
+                    th:data-quantity = "${product.quantity}"
                 />
                 </td>
+                <td align="center" th:text="${product.quantity}"></td>
             </tr>
         </tbody>
     </table>
-    <label for="name">Name:</label>
-    <input type="text" id="name">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+    </div>
     <div>
         <button type="button" id="butBtn">buy</button>
     </div>
