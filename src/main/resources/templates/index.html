@@ -15,14 +15,30 @@
                 
             </tr>
         </thead>
-        <tbody>
+        <tbody id = "productList">
             <tr th:each="product : ${products}">
                 <td th:text="${product.name}"></td>
                 <td th:text="${product.price}"></td>
-                
+                <td><input 
+                    type="number" 
+                    class="quantity"
+                    value="0" 
+                    min="0"
+                    max="10"
+                    th:data-price="${product.price}"
+                    th:data-name = "${product.name}"
+                />
+                </td>
             </tr>
         </tbody>
     </table>
-    
+    <label for="name">Name:</label>
+    <input type="text" id="name">
+    <div>
+        <button type="button" id="butBtn">buy</button>
+    </div>
+    <p id="total">total here</p>
+
+    <script src="js/calculate.js"></script>
 </body>
 </html>

@@ -24,9 +24,9 @@ public class ProductController {
 
     @PostConstruct
     private void initDB(){
-        productDB.add(new Product("apple", 10));
-        productDB.add(new Product("banana", 12));
-        productDB.add(new Product("watermelon", 20));
+        productDB.add(new Product(1, "apple", 10));
+        productDB.add(new Product(2, "banana", 12));
+        productDB.add(new Product(3, "watermelon", 20));
     }
 
     @GetMapping("/allProduct")
