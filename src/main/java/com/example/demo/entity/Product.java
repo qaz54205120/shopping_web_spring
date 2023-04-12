@@ -1,14 +1,18 @@
 package com.example.demo.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.stereotype.Indexed;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Product {
 
     private int id;
     private String name;
     private int price;
     
+    public Product(){
+        
+    }
 
     public Product(int id, String name, int price){
         this.id = id;
@@ -21,10 +25,10 @@ public class Product {
         return id;
     }
 
-    public void setId(){
+    public void setId(int id){
         this.id = id;
     }
-    
+
     public String getName(){
         return name;
     }

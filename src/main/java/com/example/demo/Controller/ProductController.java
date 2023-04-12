@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.DAO.ProductDao;
 import com.example.demo.entity.Product;
 
 import jakarta.annotation.PostConstruct;;
@@ -21,6 +23,22 @@ import jakarta.annotation.PostConstruct;;
 // @RequestMapping("/product")
 public class ProductController {
     private final List<Product> productDB = new ArrayList<>();
+
+    @Autowired
+    Product product;
+
+    @Autowired
+    ProductDao ProductService;
+
+    @RequestMapping("/test1")
+    public String hello(){
+        product = new Product();
+        product.setId(4);
+        product.setName("test");
+        product.setPrice(15);
+
+        return "success";
+    }
 
     @PostConstruct
     private void initDB(){
@@ -43,4 +61,6 @@ public class ProductController {
         model.addAttribute("products", productDB);
         return "index";
     }
+
+    
 }
