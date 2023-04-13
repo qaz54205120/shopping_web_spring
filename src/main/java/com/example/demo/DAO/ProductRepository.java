@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Product;
 
+
+//Inheritance the jpaRepo
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer>{}
 // public class ProductDao {
